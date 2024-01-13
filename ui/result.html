@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Chat Chart</title>
+    <!-- Icon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+          rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Source Serif Pro'
+          rel='stylesheet'/>
+    <!-- 3rd Party Stylesheets -->
+    <link href="css/mdb.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/agate.css"
+          rel="stylesheet"/>
+    <!-- Stylesheets -->
+    <link href="css/main.css" rel="stylesheet"/>
+    <link href="css/results.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Start your project here-->
+<div class="container">
+    <div id="sections-container" style="text-align: center">
+        <section id="title-section" class="text-center">
+            <img src="img/logo.png"
+                 alt="Logo"
+                 style="height: 60px; margin-bottom: 10px"/>
+        </section>
+
+        <hr class="hr hr-blurry"/>
+
+        <section id="results-text-section" class="data-section text-center">
+            <p class="query-text-paragraph">
+                Average nitrogen level per city in Germany
+            </p>
+        </section>
+
+        <img src="img/down_arrow.png"
+             class="arrow_img"
+             alt="Down"/>
+
+        <section id="results-llm-section" class="logic-section text-center">
+            <img src="img/llm_card.png"
+                 alt="Query Text"
+                 style="height: 60px; margin-bottom: 10px"/>
+            <h5>Large Language Model</h5>
+            <p>Use fine-tuned GPT 3.5 - turbo to generate the SQL query needed for fulfilling the text query.</p>
+        </section>
+
+        <img src="img/down_arrow.png"
+             class="arrow_img"
+             alt="Down"/>
+
+        <section id="results-sql-section" class="data-section text-center">
+            <pre class="results-sql-pre"><code class="language-sql">SELECT * FROM pollution_submissions;</code></pre>
+        </section>
+
+        <img src="img/down_arrow.png"
+             class="arrow_img"
+             alt="Down"/>
+
+        <section id="results-database-section" class="logic-section text-center">
+            <img src="img/db_card.png"
+                 alt="SQL Query"
+                 style="height: 60px; margin-bottom: 10px"/>
+            <h5>Database</h5>
+            <p>
+                Run the generated SQL query on database and get the data.
+            </p>
+        </section>
+
+        <img src="img/down_arrow.png"
+             class="arrow_img"
+             alt="Down"/>
+
+        <section id="results-table-section" class="data-section text-center">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Average NO2</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Hamburg</td>
+                    <td>14.1</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Munich</td>
+                    <td>12.2</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Dusseldorf</td>
+                    <td>14.2</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <img src="img/down_arrow.png"
+             class="arrow_img"
+             alt="Down"/>
+
+        <section id="results-chart-logic-section" class="logic-section text-center">
+            <img src="img/logic_card.png"
+                 alt="Chart Selection Logic"
+                 style="height: 60px; margin-bottom: 10px"/>
+            <h5>Chart Selection Logic</h5>
+            <p>
+                Choose the best chart for the generated table using a simple logical checks.
+            </p>
+        </section>
+
+        <img src="img/down_arrow.png"
+             class="arrow_img"
+             alt="Down"/>
+
+        <section id="results-chart-section" class="data-section text-center">
+            <canvas id="results-chart-canvas"></canvas>
+        </section>
+
+        <img src="img/finish.png"
+             alt="Finish"
+        style="height: 60px"/>
+
+        <section>
+            <a href="/"
+               class="btn btn-primary go-back-btn">Try Another Query</a>
+        </section>
+
+        <hr class="hr hr-blurry"/>
+
+        <section id="footnote-section" class="text-center" style="padding-bottom: 30vh">
+            <p class="mb-3">
+                Created by <a href="https://monireh-yousefi.com" target="_blank">Monireh Yousefi</a>
+            </p>
+        </section>
+    </div>
+</div>
+<!-- End your project here-->
+
+<!-- MDB -->
+<script type="text/javascript" src="js/mdb.umd.min.js"></script>
+<!-- HighlightJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+        type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js"
+        type="text/javascript"></script>
+<!-- ChartsJS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"
+        type="text/javascript"></script>
+<!-- Custom scripts -->
+<script type="text/javascript">
+    hljs.highlightAll();
+
+    const chartType = 'bar';
+    const chartData = {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+        }]
+    };
+    const chartOptions = {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+    const chartCanvas = document.getElementById("results-chart-canvas");
+    new Chart(chartCanvas, {
+        type: chartType,
+        data: chartData,
+        options: chartOptions,
+    });
+
+</script>
+</body>
+</html>

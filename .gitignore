@@ -1,0 +1,9 @@
+# IDE
+.idea
+.vscode
+
+# Build
+__pycache__
+
+# Environment Variables
+.env

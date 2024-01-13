@@ -1,0 +1,45 @@
+.query-text-paragraph {
+    padding: 5px;
+    color: white;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.data-section {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+    padding: 20px;
+    border-radius: 20px;
+    border: 0 solid #000;
+    /*box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);*/
+}
+
+.logic-section {
+    margin-bottom: 20px !important;
+    margin-top: 20px !important;
+    padding: 20px;
+    border-radius: 20px;
+    border: 0 solid #000;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.results-sql-pre {
+    border-radius: 20px;
+    text-align: start;
+    margin-bottom: 0;
+}
+
+p {
+    font-size: 15px;
+}
+
+.arrow_img {
+    height: 30px;
+}
+
+.go-back-btn {
+    border-radius: 200px !important;
+    text-transform: none !important;
+}
