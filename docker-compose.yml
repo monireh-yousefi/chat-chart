@@ -1,0 +1,14 @@
+services:
+  chat-chart:
+    build:
+      dockerfile: "./Dockerfile"
+      context: "."
+    environment:
+      CHAT_POLLUTION_OPENAI_API_KEY: ${CHAT_POLLUTION_OPENAI_API_KEY}
+    ports:
+      - 8080:8080
+    networks:
+      main:
+
+networks:
+  main:

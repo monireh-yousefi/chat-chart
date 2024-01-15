@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from functools import cached_property
 
+from chat_chart.base.api_router import router as base_router
 from chat_chart.config import AppConfig
 from chat_chart.llm.services import LLMService, OpenAILLMService
 from chat_chart.managers.api_manager import APIManager
@@ -36,6 +37,7 @@ class AppContainer:
             project_path=self.config.project_path,
             container=self,
             routers=[
+                base_router,
                 pollution_router,
             ],
         )

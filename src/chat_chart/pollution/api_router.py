@@ -15,7 +15,7 @@ router = APIRouter(tags=['pollution'])
 async def query(
         request: Request,
         body: Annotated[QueryBody, Body()],
-):
+) -> QueryResponse:
     service = request.app.state.container.pollution_service
 
     sql = await service.get_sql(text=body.text)
