@@ -53,3 +53,7 @@ p {
     border-radius: 20px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.7);
 }
+
+select {
+    margin: 5px;
+}
