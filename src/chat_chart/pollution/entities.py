@@ -3,10 +3,15 @@ from pydantic import BaseModel
 
 class ResultTable(BaseModel):
     headers: list[str]
-    data: list[list[str | float | int | bool]]
+    rows: list[list[str | float | int | bool | None]]
+
+
+class ResultChart(BaseModel):
+    pass
 
 
 class Result(BaseModel):
     text: str
-    sql: str
-    table: ResultTable
+    sql: str | None
+    table: ResultTable | None
+    chart: ResultChart | None

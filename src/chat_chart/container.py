@@ -33,6 +33,7 @@ class AppContainer:
             port=self.config.api_port,
             title=self.config.api_title,
             version=self.config.api_version,
+            project_path=self.config.project_path,
             container=self,
             routers=[
                 pollution_router,

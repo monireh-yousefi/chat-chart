@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -6,6 +8,8 @@ class AppConfig(BaseSettings):
         env_prefix='chat_pollution_',
         case_sensitive=False,
     )
+
+    project_path: Path = Path(__file__).parent.parent.parent
 
     debug: bool = False
 

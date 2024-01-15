@@ -1,7 +1,9 @@
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 import uvicorn
 from fastapi import FastAPI, APIRouter
+from starlette.staticfiles import StaticFiles
 
 if TYPE_CHECKING:
     from chat_chart.container import AppContainer
@@ -15,6 +17,7 @@ class APIManager:
             port: int,
             title: str,
             version: str,
+            project_path: Path,
             container: "AppContainer",
             routers: list[APIRouter],
     ):
@@ -23,8 +26,18 @@ class APIManager:
             title=title,
             version=version,
         )
+
+        self._app.mount(
+            path='/static',
+            app=StaticFiles(
+                directory=project_path / 'static',
+            ),
+            name='static',
+        )
+
         for router in routers:
             self._app.include_router(router)
+
         self._app.state.container = container
 
         self._server = uvicorn.Server(

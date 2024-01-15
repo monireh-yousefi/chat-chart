@@ -1,6 +1,6 @@
 from chat_chart.llm.entities import LLMMessage, LLMMessageRole
 from chat_chart.llm.services import LLMService
-from chat_chart.pollution.entities import ResultTable
+from chat_chart.pollution.entities import ResultTable, ResultChart
 from chat_chart.pollution.repositories import PollutionRepository
 
 
@@ -13,8 +13,10 @@ class PollutionService:
         self._llm_service = llm_service
         self._pollution_repository = pollution_repository
 
-    async def get_query_table(self, message: str) -> ResultTable:
-        sql_query = await self._llm_service.query(
+    async def get_sql(self, text: str) -> str | None:
+        return """SELECT city, AVG(no2) FROM pollution_submissions WHERE LOWER(country)='germany' GROUP BY city;"""
+
+        return await self._llm_service.query(
             messages=[
                 LLMMessage(
                     role=LLMMessageRole.SYSTEM,
@@ -33,11 +35,16 @@ class PollutionService:
                 ),
                 LLMMessage(
                     role=LLMMessageRole.USER,
-                    content=f'Generate a SQL query to answer the following message:\n {message}'
+                    content=f'Generate a SQL query for the following message:\n {text}'
                 ),
             ]
         )
 
-        return await self._pollution_repository.get_pollution_submissions(
-            sql_query=sql_query,
+    async def get_table(self, sql: str) -> ResultTable | None:
+        return await self._pollution_repository.run_sql(
+            sql=sql,
         )
+
+    async def get_chart(self, table: ResultTable) -> ResultChart | None:
+        # TODO:
+        return None

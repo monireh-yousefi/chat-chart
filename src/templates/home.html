@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <title>Chat Chart</title>
     <!-- Icon -->
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon"/>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
           rel="stylesheet"/>
@@ -16,15 +16,15 @@
     <link href='https://fonts.googleapis.com/css?family=Source Serif Pro'
           rel='stylesheet'/>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/mdb.min.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="/static/css/mdb.min.css"/>
+    <link rel="stylesheet" href="/static/css/main.css"/>
 </head>
 <body>
 <!-- Start your project here-->
 <div class="container">
     <div id="sections-container">
         <section id="title-section" class="text-center">
-            <img src="img/logo.png"
+            <img src="/static/img/logo.png"
                  alt="Logo"
                  style="height: 60px; margin-bottom: 10px"/>
         </section>
@@ -32,7 +32,7 @@
         <hr class="hr hr-blurry"/>
 
         <section id="description-section" class="text-center">
-            <img src="img/project_description.png"
+            <img src="/static/img/project_description.png"
                  alt="Project Description"
                  style="height: 60px; margin-bottom: 10px"/>
             <h1>Project Description</h1>
@@ -89,7 +89,7 @@
         <hr class="hr hr-blurry"/>
 
         <section id="query-section" class="text-center">
-            <img src="img/start.png"
+            <img src="/static/img/start.png"
                  alt="Phase1: Text Query"
                  style="height: 60px; margin-bottom: 10px"/>
             <h1>Let's Start :D</h1>
@@ -97,8 +97,9 @@
                 Please select one of the sample queries or enter one yourself.
             </p>
 
-            <form id="text-query-form">
+            <form id="text-query-form" action="/ui/v1/pollution/result" method="post">
                 <input id="text-query-input"
+                       name="text_query"
                        type="search"
                        maxlength="40"
                        class="form-control rounded"
@@ -126,7 +127,7 @@
 <!-- End your project here-->
 
 <!-- MDB -->
-<script type="text/javascript" src="js/mdb.umd.min.js"></script>
+<script type="text/javascript" src="/static/js/mdb.umd.min.js"></script>
 <!-- Custom scripts -->
 <script type="text/javascript"></script>
 </body>
