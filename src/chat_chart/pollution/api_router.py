@@ -2,7 +2,7 @@ from typing import Annotated
 
 import sqlparse
 from fastapi import APIRouter, Request, Body, Form
-from starlette.responses import HTMLResponse
+from starlette.responses import HTMLResponse, RedirectResponse
 from starlette.templating import Jinja2Templates
 
 from chat_chart.pollution.entities import Result
@@ -12,7 +12,7 @@ router = APIRouter(tags=['pollution'])
 
 
 @router.post('/api/v1/pollution/query')
-async def query(
+async def post_query(
         request: Request,
         body: Annotated[QueryBody, Body()],
 ) -> QueryResponse:
@@ -49,8 +49,13 @@ async def get_home(
     )
 
 
+@router.get('/')
+async def get_result() -> RedirectResponse:
+    return RedirectResponse(url='/ui/v1/pollution/home')
+
+
 @router.post('/ui/v1/pollution/result')
-async def get_result(
+async def post_result(
         request: Request,
         text_query: Annotated[str, Form()]
 ) -> HTMLResponse:

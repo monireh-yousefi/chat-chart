@@ -37,53 +37,36 @@
                  style="height: 60px; margin-bottom: 10px"/>
             <h1>Project Description</h1>
             <p style="text-align: justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus purus in semper laoreet. Cras
-                vitae
-                leo non erat fermentum rhoncus in vel lectus. Vivamus tempus augue nec ante luctus, vitae rutrum dui
-                varius.
-                Nullam faucibus ex sit amet metus sollicitudin condimentum. Class aptent taciti sociosqu ad litora
-                torquent
-                per conubia nostra, per inceptos himenaeos. Vestibulum ante ipsum primis in faucibus orci luctus et
-                ultrices
-                posuere cubilia curae; Aenean et pharetra velit. Sed pretium vel dolor at auctor. Cras scelerisque quis
-                orci
-                eu aliquet.
-
-                Duis pulvinar dapibus lectus, sit amet tristique ipsum malesuada sit amet. Sed tellus diam, cursus id
-                tortor
-                nec, luctus placerat nisi. Pellentesque eros mauris, convallis id neque tempor, ultrices feugiat felis.
-                In
-                lacus dolor, bibendum et commodo ac, interdum non enim. Sed vel ligula in augue volutpat accumsan.
-                Phasellus
-                sed posuere ante, sit amet porttitor velit. In malesuada tellus sed eros hendrerit congue. Sed sed felis
-                risus.
-
-                Donec arcu nunc, porttitor id mauris et, venenatis gravida nisl. Curabitur quis tempus est. Fusce
-                tincidunt,
-                tortor nec condimentum rutrum, ligula justo egestas lorem, nec egestas magna ligula eget sapien. Etiam
-                risus
-                enim, sollicitudin quis consectetur vel, lacinia nec lacus. Praesent venenatis blandit nibh, et iaculis
-                turpis semper quis. Vestibulum non sodales justo. Suspendisse cursus consequat risus, sit amet mattis
-                leo
-                vehicula vel. Proin ut dolor nec ligula sodales convallis. Morbi at dapibus nisl, a sollicitudin lorem.
-                Proin id imperdiet nisl. Curabitur at tortor nunc. Nam et est in velit venenatis fringilla nec quis
-                ligula.
-
-                Sed id dignissim eros, et pharetra diam. Duis eget ullamcorper ligula. Nullam at mi ac lacus dictum
-                elementum. Vestibulum id ultricies dolor. Phasellus sed congue lorem. Sed sed diam quis nulla gravida
-                venenatis. Nunc et massa tincidunt, posuere massa vel, dictum est. Sed et orci diam. Curabitur dapibus
-                felis
-                in ultrices accumsan.
-
-                Donec diam nibh, venenatis vestibulum auctor nec, ullamcorper et nunc. In aliquam sit amet leo ut
-                gravida.
-                Suspendisse potenti. Cras id arcu eget enim faucibus facilisis. Mauris fringilla massa at nisl
-                fermentum,
-                imperdiet ultricies turpis viverra. Maecenas sodales venenatis ornare. Donec sit amet suscipit lacus.
-                Suspendisse urna diam, porta ac scelerisque quis, suscipit vitae dui. Praesent tincidunt urna velit, ac
-                facilisis sapien rutrum ut. Proin non pulvinar neque. In dignissim felis id neque congue convallis eu in
-                magna.
+                Chat-Chart is an innovative project at the intersection of artificial intelligence and environmental
+                data visualization, aiming to improve the way users interact with and comprehend complex datasets.
             </p>
+            <p style="text-align: justify">
+                Leveraging Language Model (LLM) capabilities, Chat-Chart enables users to effortlessly convert natural
+                language queries into structured SQL queries. The query is then executed on a database which contains
+                a subset of
+                <a href="https://www.kaggle.com/datasets/hasibalmuzdadid/global-air-pollution-dataset?resource=download">global
+                    air pollution dataset</a>.
+                After that, we examine the result columns to select one of the line, bar or scatter charts to visualize
+                the table. By combining AI-driven language processing with intuitive data representation, we can make
+                interacting with complex datasets such as environmental ones, much easier and accessible.
+            </p>
+            <h3 style="text-align: justify">Technologies Used:</h3>
+            <ul style="text-align: justify">
+                <li><b>Server:</b> Python, FastAPI, Docker, SQL, SQLite, SQLAlchemy</li>
+                <li><b>UI:</b> HTML, CSS, Bootstrap, MDB, Chart.js, Highlight.js</li>
+                <li><b>AI:</b> OpenAI API, GPT 3.5 Model</li>
+            </ul>
+            <h3 style="text-align: justify">Potential Research Areas:</h3>
+            <ul style="text-align: justify">
+                <li>
+                    Using large language models to query and create insights from multiple data sources.
+                    This project only uses a single table in the database.
+                </li>
+                <li>
+                    Using AI to improve chart selection and parameter setting based on the data. In this project we are
+                    just using a couple of extracted properties to select the chart. But this can be improved using AI.
+                </li>
+            </ul>
         </section>
 
         <hr class="hr hr-blurry"/>
@@ -96,6 +79,10 @@
             <p>
                 Please select one of the sample queries or enter one yourself.
             </p>
+
+            <p class="suggested-query" onclick="suggestedQueryOnClick(this)">Average nitrogen levels in each city of germany</p>
+            <p class="suggested-query" onclick="suggestedQueryOnClick(this)">Total amount of pm25 level per region</p>
+            <p class="suggested-query" onclick="suggestedQueryOnClick(this)">Number of submissions in each year</p>
 
             <form id="text-query-form" action="/ui/v1/pollution/result" method="post">
                 <input id="text-query-input"
@@ -129,6 +116,13 @@
 <!-- MDB -->
 <script type="text/javascript" src="/static/js/mdb.umd.min.js"></script>
 <!-- Custom scripts -->
-<script type="text/javascript"></script>
+<script type="text/javascript">
+    function suggestedQueryOnClick(e) {
+        const queryInput = document.getElementById('text-query-input');
+        const queryForm = document.getElementById('text-query-form');
+        queryInput.value = e.innerText;
+        queryForm.submit();
+    }
+</script>
 </body>
 </html>
